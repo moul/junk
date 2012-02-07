@@ -1,0 +1,1 @@
+exec 3<>/dev/tcp/ns-server.epitech.eu/4242;echo -e "list_users\nlist_users\n" >&3;cat <&3 | grep -m 1 "rep 002 -- cmd end" -B 10000 | sed '1d;$d'

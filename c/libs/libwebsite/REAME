@@ -1,0 +1,18 @@
+##
+## libwebsite
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- #include "libwebsite.h"
+- LDFLAGS += -Lpath/to/libwebsite -lwebsite
+- CFLAGS += -Ipath/to/libwebsite
+
+########################################
+
+available functions:
+- ws_init();
+- ws_add_header(header_str);
+- ws_print_headers();
+
+not yet available functions:

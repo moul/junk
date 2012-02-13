@@ -1,0 +1,20 @@
+##
+## libserialize
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- #include "libserialize.h"
+- LDFLAGS += -Lpath/to/libserialize -lserialize
+- CFLAGS += -Ipath/to/libserialize
+
+########################################
+
+available functions:
+-
+
+not yet available functions:
+- 
+
+depends:
+- liblc

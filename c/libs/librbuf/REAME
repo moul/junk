@@ -1,0 +1,12 @@
+- #include "librbuf.h"
+- LDFLAGS += -Lpath/to/librbuf -lrbuf
+- CFLAGS += -Ipath/to/librbuf
+
+rbuf	rbuf_new(int);
+int	rbuf_add(rbuf, char *);
+int	rbuf_addn(rbuf, char *, int);
+char	*rbuf_get(rbuf);
+void	rbuf_unset(rbuf);
+void	rbuf_reset(rbuf);
+int	rbuf_read(int, rbuf, int);
+int	rbuf_eof(rbuf);

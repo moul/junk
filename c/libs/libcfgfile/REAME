@@ -1,0 +1,24 @@
+##
+## libcfgfile
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- #include "libcfgfile.h"
+- LDFLAGS += -Lpath/to/libcfgfile -lcfgfile
+- CFLAGS += -Ipath/to/libcfgfile
+- see example.conf file
+
+########################################
+
+available functions:
+- cfgfile_getopt(filename, category, key);
+- cfgfile_cat_exists(filename, category);
+- cfgfile_key_exists(filename, category, key);
+
+not yet available functions:
+- cfgfile_last_error();
+
+depends:
+- liblc
+- librbuf

@@ -1,0 +1,22 @@
+##
+## libnetcli
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- #include "libnetcli.h"
+- LDFLAGS += -Lpath/to/libnetcli -lnetcli
+- CFLAGS += -Ipath/to/libnetcli
+
+########################################
+
+available functions:
+- 
+
+not yet available functions:
+- 
+
+depends:
+- liblc
+- librbuf
+- libmlutil

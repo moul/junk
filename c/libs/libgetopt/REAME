@@ -1,0 +1,18 @@
+##
+## libgetopt
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- #include "libgetopt.h"
+- LDFLAGS += -Lpath/to/libgetopt -lgetopt
+- CFLAGS += -Ipath/to/libgetopt
+
+########################################
+
+available functions:
+- getopt_init(argc, argv);
+- getopt_exists_all("ofa:");
+- getopt_usage("bla");
+
+not yet available functions:

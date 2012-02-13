@@ -1,0 +1,40 @@
+##
+## libnet
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- #include "libnet.h"
+- LDFLAGS += -Lpath/to/libnet -lnet
+- CFLAGS += -Ipath/to/libnet
+
+########################################
+
+available functions:
+* common.h:
+- bool	libnet_init(void);
+- void	libnet_uninit(void);
+
+* net.h:
+- int	libnet_create_tcp_server(port);
+- int	libnet_connect(hostname, port);
+
+- int	libnet_write(fd, buf, size;)
+- int	libnet_read(fd, buf, size);
+- int	libnet_send(fd, str);
+- int	libnet_sendline(fd, str);
+- char	*libnet_getnextline(fd);
+
+* select.h:
+- int	libnet_select();
+- void	libnet_select_reset();
+- bool	libnet_select_add_fd(fd);
+- libnet_select_foreach_fd(tmp);
+
+not yet available functions:
+- char	*libnet_error();
+
+depends:
+- liblc
+- librbuf
+- libmlutil

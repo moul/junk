@@ -1,0 +1,10 @@
+##
+## libdebugmalloc
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- add xmalloc.[ch] to your project
+- ld your project with LDFLAGS+=-Wl,--export-dynamic
+- LD_PRELOAD the debug lib
+

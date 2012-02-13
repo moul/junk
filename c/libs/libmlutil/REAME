@@ -1,0 +1,3 @@
+- #include "libmlutil.h"
+- LDFLAGS += -Lpath/to/libmlutil -lmlutil
+- CFLAGS += -Ipath/to/libmlutil

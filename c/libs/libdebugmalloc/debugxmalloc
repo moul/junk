@@ -1,0 +1,30 @@
+#!/bin/sh
+
+if [ $# = 0 ] ; then
+    echo "$0: insufficient arguments"
+    exit
+fi
+
+MODULE_PATH=$(dirname $_)/$(echo $0 | sed 's|.*/\([^/]*\)|\1|g').so
+
+case "$1" in
+    *)
+	if [ -z "$LD_PRELOAD" ]
+	then
+	    export LD_PRELOAD=$MODULE_PATH
+	else
+	    echo $LD_PRELOAD | grep -q $MODULE_PATH || \
+		export LD_PRELOAD="$MODULE_PATH $LD_PRELOAD"
+	fi
+	
+	if [ $# = 0 ]
+	then
+	    ${SHELL:-/bin/sh}
+	fi
+	
+	if [ $# -gt 0 ]
+	then
+	    exec "$@"
+	fi
+	;;
+esac

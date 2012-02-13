@@ -1,0 +1,17 @@
+##
+## libservices
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- LDFLAGS += -Lpath/to/libservices -lservices
+- CFLAGS += -Ipath/to/libservices
+
+- #include <libservices/module.h> or
+- #include <libservices/net.h> or
+- #include <libservices/client.h>
+
+########################################
+
+depends:
+- liblc

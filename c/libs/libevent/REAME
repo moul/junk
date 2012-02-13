@@ -1,0 +1,26 @@
+##
+## libevent
+##
+## Copyright (c) Manfred Touron 2008
+##
+
+- #include "libevent.h"
+- LDFLAGS += -Lpath/to/libevent -levent
+- CFLAGS += -Ipath/to/libevent
+- see tester.c for an implementation examples
+
+########################################
+
+available functions:
+- event_add_handler("name", callback_func);
+- event_del_handler("name", callback_func);
+- EVENT_CALL("name", ...);
+- events_debug();
+
+not yet available functions:
+- events_history();
+
+########################################
+
+depends:
+- liblc

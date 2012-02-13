@@ -1,0 +1,3 @@
+- #include "libselect.h"
+- LDFLAGS += -Lpath/to/libselect -lselect
+- CFLAGS += -Ipath/to/libselect

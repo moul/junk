@@ -1,0 +1,51 @@
+void			progressbar()
+{
+  static unsigned int	c = 0;
+
+  write(1,"D      ", 12 -
+	write(1,"[?] 8=====",5 + ((c >> 2 & 1 ? -1 : 1)
+				  * (++c & 3)
+				  + (c % 0x20 & 100))));
+  write(1, "p0wn in progress", 16);
+  write(1, "...", c / 4 % 4);
+  write(1, "   \r", 4);
+}
+
+int	main()
+{
+  int	i;
+
+  printf("[+] Running pwnage\n");
+  for (i = 0; i < 100 && !usleep(50000); i++)
+    (void)progressbar();
+  printf("[+] Running pwnage 2             \n");
+  for (i = 0; i < 100 && !usleep(50000); i++)
+    (void)progressbar();
+  printf("[+] Done                         \n");
+  return (0);
+}
+
+#if 0
+void			progressbar()
+{
+  static unsigned int	c = 0;
+
+  write(1,"D      ", 12 -
+	write(1,"[?] 8=====",5 + ((c >> 2 & 1 ? -1 : 1)
+				  * (++c & 3)
+				  + (c % 0x20 & 100))));
+  write(1, "p0wn in progress", 16);
+  write(1, "...", c / 4 % 4);
+  write(1, "   \r", 4);
+}
+
+void			progressbar()
+{
+  static unsigned int	c = 0;
+  
+  write(1, "D       ", 12 - write(1, "[?] 8=====", 5 + ((c >> 2 & 1 ? -1 : 1) * ++c & 3 + (c % 0x20 & 100))));
+  write(1, "powning in progress", 19);
+  write(1, "...", c / 4 % 4);
+  write(1, "   \r", 4);
+}
+#endif /* 0 */

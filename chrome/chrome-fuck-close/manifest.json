@@ -1,0 +1,13 @@
+{
+  "name": "Fuck window close",
+  "version": "1.0.0",
+  "description": "Fuck window close",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["window_close.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "update_url": "http://clients2.google.com/service/update2/crx"
+}

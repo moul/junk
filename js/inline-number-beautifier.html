@@ -4,6 +4,7 @@
   <body>
     <script>
       var number = 123456789456780.23456789;
+
       alert((function(n) { return Math.floor(n).toString().split("").reverse().join("").replace(/(\d{3})/g, '$1 ').split("").reverse().join("") + '.' + (Math.floor((n - Math.floor(n)) * 100)).toString().substring(1); })(number));
     </script>
   </body>

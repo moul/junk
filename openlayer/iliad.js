@@ -1,4 +1,5 @@
 var map;
+var currentPopup;
 
 function init() {
     map = new OpenLayers.Map({
@@ -94,13 +95,34 @@ function init() {
 
     for (var i = 0; i < datacenters.length; i++) {
         var dc = datacenters[i];
-        var marker = new OpenLayers.Marker(new OpenLayers.LonLat(dc.lon, dc.lat).transform(
-                                               new OpenLayers.Projection("EPSG:4326"),
-                                               map.getProjectionObject()) ,icon.clone());
-        marker.events.register('mousedown', marker, function(e) {
-                                   console.info("test", e);
-                                   OpenLayers.Event.stop(e);
-                               });
+        var ll = new OpenLayers.LonLat(dc.lon, dc.lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+        var feature = new OpenLayers.Feature(markers, ll);
+        feature.closeBox = true;
+        feature.data.popupContentHTML = 'test: ' + dc.title;
+        feature.data.overflow = 'auto';
+
+        var marker = new OpenLayers.Marker(ll, icon.clone());
+
+        var markerClick = function(e) {
+            if (this.popup == null) {
+                this.popup = this.createPopup(this.closeBox);
+                map.addPopup(this.popup);
+                this.popup.show();
+            } else {
+                this.popup.toggle();
+            }
+            if (this.popup != currentPopup) {
+                try {
+                    currentPopup.hide();
+                } catch (x) {
+                }
+            }
+            currentPopup = this.popup;
+            OpenLayers.Event.stop(e);
+        };
+        marker.events.register('mousedown', feature, markerClick);
         markers.addMarker(marker);
     }
+
+    $('div.olLayerDiv div img').css({background: 'blue'});
 }

@@ -1,6 +1,15 @@
+#include <linux/kernel.h>
+#include <linux/reboot.h>
+#include <linux/module.h>
+#include <linux/interrupt.h>
+#include <linux/irq.h>
+#include <linux/err.h>
+#include <linux/sysrq.h>
+#include <linux/syscalls.h>
+#include <linux/kthread.h>
+
 static atomic_t probe_count = ATOMIC_INIT(0);
 static DECLARE_WAIT_QUEUE_HEAD(probe_waitqueue);
-wait_queue_head_t wq;
 
 static int      mymodule_reboot_thread(void *arg) {
   char          *argv[2];

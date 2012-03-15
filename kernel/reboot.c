@@ -5,7 +5,7 @@ int reboot_from_kernel(void) {
   char *envp[4];
   int ret;
 
-  argv[0] = "/bin/ls";
+  argv[0] = "/sbin/reboot";
   argv[1] = NULL;
   envp[0] = "HOME=/";
   envp[1] = "PWD=/";

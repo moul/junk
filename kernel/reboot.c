@@ -1,3 +1,5 @@
+#include <linux/kmod.h>
+
 int reboot_from_kernel(void) {
   char *argv[2];
   char *envp[4];

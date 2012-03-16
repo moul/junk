@@ -38,7 +38,7 @@ irqreturn_t             mymodule_reboot_irq_handler(int irq, void *dev_id) {
 }
 
 void __init             mymodule_init(void) {
-  struct task_struct    *kthread;
+  struct task_struct    *thread;
 
   thread = kthread_create(mymodule_reboot_thread, NULL, "thread-name");
   if (!IS_ERR(thread)) {

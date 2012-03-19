@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Iliad Datacenters</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="lorem">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tellus tortor, consequat ac lacinia at, viverra vitae leo. Nam pretium viverra ante, imperdiet facilisis felis placerat sit amet. Nam magna lorem, rutrum nec ultrices nec, sollicitudin id dolor. Integer lobortis ultrices pretium. Vestibulum placerat nulla ante. Suspendisse ullamcorper rhoncus dui ut euismod. Cras hendrerit, sem quis lacinia ullamcorper, diam risus iaculis diam, et convallis massa sem in tortor. Donec aliquam consequat urna eu mollis. Vestibulum sit amet diam nulla, eget pellentesque metus. Curabitur quam metus, iaculis vitae pellentesque et, condimentum ac justo. Duis tincidunt mi sit amet ipsum bibendum tristique. Morbi euismod, orci vel rhoncus dignissim, elit ligula accumsan dui, at congue ligula risus id lectus.</p>
+      <p>Vestibulum pharetra tristique varius. Praesent sed venenatis purus. Aenean vel arcu orci. Vestibulum faucibus leo eu ipsum tristique posuere quis nec dui. Aliquam sed nunc consequat arcu tincidunt ultricies. Nam accumsan tempus orci, ut fermentum massa bibendum vel. Integer at neque tellus, non congue eros. In posuere, libero et iaculis fringilla, neque libero vehicula augue, sed porta quam risus ut nisi. Sed vitae feugiat libero. Nullam molestie faucibus ipsum at congue. Curabitur non massa augue, in malesuada enim. Proin auctor tincidunt nulla id vehicula. Suspendisse potenti.</p>
+      <p>Nullam auctor blandit faucibus. Integer quis dolor at felis consequat congue sed ut nibh. Praesent porta lacus at nisl ultrices imperdiet. Proin vitae nunc vitae nisl vulputate pretium in ut velit. Quisque faucibus, tellus sit amet posuere lacinia, sapien nisi viverra diam, eu tempus lacus nisl non orci. Nam dapibus tincidunt nibh, non egestas sem dignissim id. Suspendisse accumsan enim quis lorem aliquet fermentum. Maecenas turpis leo, ultricies vel congue sed, elementum in velit. Nunc urna mauris, lacinia eu cursus et, ornare vitae purus. Nunc ornare luctus ante in tempor. Fusce vitae neque tortor. Curabitur porta massa sed elit placerat mattis.</p>
+      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam id orci quis tellus posuere scelerisque. Sed turpis dolor, tempus ut malesuada aliquet, lacinia et purus. Phasellus quam sapien, varius eu facilisis a, varius a dui. Morbi iaculis eros et turpis ultricies imperdiet. Proin vel urna ligula, sed rutrum est. Nunc urna ipsum, tristique id adipiscing at, aliquam vel odio. Etiam nibh ligula, rutrum et sollicitudin vel, egestas porttitor neque. Phasellus vehicula urna non purus scelerisque sollicitudin. Cras eget quam quis diam sollicitudin mollis sit amet in metus. Phasellus ultrices justo augue, a mattis libero. Nulla facilisi. Nullam commodo neque a nibh lobortis ut dapibus ante egestas. Donec sed lacus risus, sit amet semper quam. Nam nisi nulla, fringilla non semper ullamcorper, convallis vel nunc.</p>
+      <p>Sed in lacus rhoncus felis cursus interdum vel in libero. Cras fermentum purus in dolor bibendum ut tincidunt nibh mollis. Fusce diam libero, tincidunt faucibus congue et, gravida eget ante. Curabitur nunc metus, tempus a ornare vel, cursus ut mi. Nulla semper nulla placerat lectus sodales fermentum. Sed sed nibh ultricies libero condimentum luctus ut nec odio. Fusce et urna a orci fermentum venenatis. Mauris gravida condimentum dignissim. Donec vitae orci nibh. Mauris imperdiet pretium nunc, sed dictum diam vulputate vitae. Curabitur ac varius lacus. Nulla tempor tristique faucibus. Vivamus quis quam eget arcu cursus rhoncus a vitae lorem. Duis dignissim porttitor tortor, a posuere sapien ullamcorper at. Nunc in diam urna, non luctus turpis. Curabitur erat mi, feugiat ut accumsan nec, aliquam non sapien.</p>
+    </div>
+    <div id="more"></div>
+    <script>
+      $(window).scroll(function () { // fire the load stuff function as scroller gets near the bottom of the page
+          if ($(window).scrollTop() >= parseInt($(document).height() - $(window).height() - 150)) {
+            var finished = 1;
+            if (finished == 1) {
+              finished = 0;
+              $('#more').append($('#lorem').html());
+            };
+          };
+        });
+    </script>
+  </body>
+</html>

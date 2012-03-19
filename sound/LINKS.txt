@@ -1,0 +1,6 @@
+http://wurstcaptures.untergrund.net/music/
+http://www.youtube.com/watch?feature=player_detailpage&v=tCRPUv8V22o#t=176s
+https://github.com/bgruber/html5-audio-experiments/blob/gh-pages/audio.js
+https://github.com/devp/html5-audio-hack
+https://github.com/devgeeks/ExampleHTML5AudioStreaming/tree/master/www/scripts
+http://js1k.com/2010-first/demo/806

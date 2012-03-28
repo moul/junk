@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Base Calculator</title>
+    <link type="text/css" href="style.css" rel="stylesheet" />
+    <script type="text/javascript" src="math.js"></script>
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <td>Base</td>
+          <td>Calcul</td>
+          <td>Result</td>
+          <td>Debug</td>
+        </tr>
+      </thead>
+      <tbody>
+        <!--<tr>
+          <td><input type="text" class="base" value="2" /></td>
+          <td><input type="text" class="calcul" value="10 + 101" /></td>
+          <td><input type="text" class="debug" disabled /></td>
+          <td><input type="text" class="result" disabled /></td>
+        </tr>-->
+        <tr data-base="10">
+          <td><input type="text" class="base" value="10" /></td>
+          <td><input type="text" class="calcul" value="Math.pow(42,2) + 12" /></td>
+          <td><input type="text" class="debug" disabled /></td>
+          <td><input type="text" class="result" disabled /></td>
+        </tr>
+        <!--<tr data-base="16">
+          <td><input type="text" class="base" value="16" /></td>
+          <td><input type="text" class="calcul" value="F9 + 5" /></td>
+          <td><input type="text" class="debug" disabled /></td>
+          <td><input type="text" class="result" disabled /></td>
+        </tr>-->
+      </tbody>
+    </table>
+  </body>
+</html>

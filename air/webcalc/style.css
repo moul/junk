@@ -1,0 +1,10 @@
+body {
+  background: #000;
+  color: white;
+}
+
+input {
+  background: #111;
+  border: 1px solid #888;
+  color: white;
+}

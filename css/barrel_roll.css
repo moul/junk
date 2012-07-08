@@ -1,0 +1,14 @@
+body.doroll {
+  animation-name:roll;
+  animation-duration:4s;
+  animation-iteration-count:1;
+  -ms-animation-name:roll;
+  -ms-animation-duration:4s;
+  -ms-animation-iteration-count:1;
+  -moz-animation-name:roll;
+  -moz-animation-duration:4s;
+  -moz-animation-iteration-count:1;
+  -webkit-animation-name:roll;
+  -webkit-animation-duration:4s;
+  -webkit-animation-iteration-count:1;
+}

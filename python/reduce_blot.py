@@ -30,3 +30,14 @@ if __name__ == "__main__":
     blot(container, ["k"], 50)
     pprint(width = 1).pprint(container)
 
+    """
+    $ ./reduce_blot.py
+    {'a': 42,
+    'b': 43,
+    'c': 44,
+    'd': {'e': {'f': {'g': 45},
+                'h': 47,
+                'i': 48},
+          'j': 49},
+    'k': 50}
+    """

@@ -1,0 +1,2 @@
+print __file__
+

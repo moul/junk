@@ -1,0 +1,77 @@
+faire un systeme de reload
+mieux gerer les stats
+gerer historique
+gerer le counter ++ par sessions
+gerer mieux le code
+gerer les filters
+gerer les scenarios
+gerer la conf en remote
+gerer le tout en modules detaches selectionnable via l'admin et reloadable via kill -HUP, gerer toute la conf en remote avec auto refresh
+voir pour gerer l'admin via le proxy only avec une url particuliere
+
+
+filters:
+- disallow une url/ip
+- input filter: regexp/encoding/decoding/append/prepend
+- output filter: regexp/encoding/decoding/append/prepend
+- passe par un proxy
+- chaine un proxy
+- execute du code
+- log: mysql/no/file
+- alerte avec confirmation
+
+modules
+- gzip
+- port knocking
+- administration
+- proxy_http
+- proxy_socks
+- filter_regexp
+- filter_encoding_decoding
+- filter append_prepend
+- proxy_chaining
+- code_execution (eval by hook) (create actions)
+- log_mysql
+- log_file
+- log
+- url_ip_allow_disallow
+
+scenarios: creation d'un nouveau scenario, ajout de functionnalites (rules) permet de faire des actions, si les filters le permettent
+- gerer le scenario change proxy
+- gerer le scenario no pub
+- gerer le scenario pwn auto
+
+2 types: is_administration | is_proxy
+
+hooks:
+- hook_server_init
+- hook_server_shutdown
+- hook_thread_init
+- hook_thread_shutdown
+- hook_page_init
+- hook_page_shutdown
+- hook_pre_input
+- hook_post_input
+- hook_pre_output
+- hook_post_output
+- hook_pre_connect
+- hook_post_connect
+- hook_module_enable
+- hook_module_disable
+- hook_cron
+- hook_menu
+- hook_headers_received
+
+content types:
+- modules
+- filters
+- scenarios
+- sessions
+- users (groups)
+- proxies (tags)
+
+themes:
+- theme_page
+- theme_menu
+- theme_table
+- theme_list

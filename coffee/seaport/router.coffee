@@ -6,6 +6,9 @@ bouncy = require 'bouncy'
 ports = seaport.createServer()
 ports.listen 5001
 
+ports.on 'register', (service) ->
+    console.log 'register', service
+
 bouncy((req, bounce) ->
     service = 'static'
 

@@ -1,0 +1,16 @@
+#vikanim {
+  position: relative;
+  width: 570px;
+  margin-left: 50px;
+  height: 570px;
+  background-color: #000000;
+}
+
+#vikanim .bar {
+  width: 18px;
+  height: 490px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 278px;
+  top: 40px;  
+}

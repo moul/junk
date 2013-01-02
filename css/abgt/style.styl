@@ -1,0 +1,68 @@
+$width      = $height = 800px
+$margin     = 20px
+$barwidth   = $width / 35
+$time       = 2.2s
+$deg        = 90deg
+$colors     = #4390c1 #eb036d #f7f910 #468fc1 #f50000 #8d107a #5fab21 #f68ec3 #4390c1 #f4000b #237b26 #f75600 #f7f910 #ffffff #4390c1 #eb036d #f7f910 #468fc1 #f50000 #8d107a #5fab21 #f68ec3 #4390c1 #f4000b #237b26 #f75600 #f7f910 #ffffff
+$animations = bar1 bar2 bar3 bar4 bar5 bar6 bar7 bar8 bar9 bar10 bar11 bar12 bar13 bar14 bar15 bar16 bar17 bar18 bar19 bar20 bar21 bar22 bar23 bar24 bar25 bar26 bar27 bar28
+//$total      = length($colors)
+$total      = 13
+$limit      = 0..13
+
+transition(args)
+  -webkit-transition: args
+  transition:         args
+  -moz-transition:    args
+  -o-transition:      args
+
+animation(args)
+  -webkit-animation: args
+  animation:         args
+
+_transform(args)
+  -webkit-transform: args
+  transform: args
+
+for $i in $limit
+  $animation = $animations[$i]
+  @keyframes $animation
+    0%
+      _transform(rotate(0))
+    30%
+      _transform(rotate($deg))
+    40%
+      _transform(rotate($deg))
+
+.logo
+  margin:     auto
+  background: #201f1f
+  width:      $width
+  height:     $height
+  position:   relative
+  opacity:    0
+  transition(opacity 0.2s ease-in)
+
+  .bar
+    height:   $height - $margin * 2
+    margin:   $margin
+    position: absolute
+    width:    $barwidth
+    left:     ($width / 2 - $barwidth - $margin / 2)px
+
+  for $i in $limit
+    $color = $colors[$i]
+    .bar{$i + 1}
+      z-index:           length($colors) - $i
+      background-color:  $color
+      -webkit-transform: rotate(($deg/(($total - 1)/($i)))deg)
+
+.animate
+  .logo
+    opacity: 1 !important
+    //.bar
+    //  border: 1px solid white
+    for $i in $limit
+      $color = $colors[$i]
+      .bar{$i + 1}
+        $name = $animations[$i]
+        animation($name $time ease-in-out)

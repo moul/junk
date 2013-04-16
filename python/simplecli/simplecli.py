@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import readline
 import CliBase
 
 class CliPoney(CliBase.CliBase):

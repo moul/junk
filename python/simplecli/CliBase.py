@@ -1,10 +1,17 @@
 import readline
 import shlex
-from sys import exit
+import os
+import sys
+import atexit
 
 class CliBase:
-    def __init__(self):
-        print 'init'
+    def __init__(self, histfile = '~/simplecli.history'):
+        histfile = os.path.expanduser(histfile)
+        try:
+            readline.read_history_file(histfile)
+        except:
+            pass
+        atexit.register(readline.write_history_file, histfile)
 
     def run(self):
         while True:
@@ -25,4 +32,4 @@ class CliBase:
                 print 'exit'
             except (EOFError):
                 print 'exit'
-                exit(0)
+                sys.exit(0)

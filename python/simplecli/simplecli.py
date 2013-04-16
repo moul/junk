@@ -9,7 +9,7 @@ class CliPoney(CliBase.CliBase):
     def cmd_titi(self, *args):
         print 'titi'
 
-    def cmd_tata(self, arg1, arg2 = 42, *args):
+    def cmd_tata(self, arg1 = 43, arg2 = 42, *args):
         print 'tata', arg1, arg2
 
 if __name__ == "__main__":

@@ -1,0 +1,3 @@
+- http://twistedmatrix.com/documents/current/core/howto/tutorial/
+- https://github.com/search?q=twisted&type=Repositories&ref=searchresults
+- http://twistedmatrix.com/trac/

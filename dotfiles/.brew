@@ -96,6 +96,10 @@ installcask true-crypt
 installcask vine-server
 installcask xbmc
 installcask x-quartz
+installcask google-drive
+installcask zap-proxy
+installcask picasa
+installcask team-viewer
 
 # Remove outdated versions from the cellar
 brew cleanup

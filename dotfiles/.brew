@@ -83,7 +83,7 @@ installcask adobe-air
 installcask alfred
 installcask chromium
 installcask cyberduck
-installcask evernote
+#installcask evernote
 installcask f-lux
 installcask fluid
 installcask i-stumbler

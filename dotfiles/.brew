@@ -76,6 +76,9 @@ installcask transmission
 installcask ukelele
 installcask virtualbox
 installcask vlc
+
+# moul
+brew install mobile-shell
 installcask adobe-air
 installcask alfred
 installcask chromium

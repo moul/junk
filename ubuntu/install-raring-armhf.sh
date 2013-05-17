@@ -13,7 +13,7 @@ echo "deb http://ports.ubuntu.com raring main restricted universe
 deb-src http://ports.ubuntu.com raring main restricted universe" > /etc/apt/sources.list
 
 apt-get update
-apt-get install apt-utils openssh-server htop tmux emacs24-nox wget less
+apt-get install apt-utils openssh-server htop tmux emacs24-nox wget less lsb-release ifconfig
 # open-iscsi ?
 
 passwd

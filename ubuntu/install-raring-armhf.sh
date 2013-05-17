@@ -14,3 +14,6 @@ deb-src http://ports.ubuntu.com raring main restricted universe" > /etc/apt/sour
 
 apt-get update
 apt-get install apt-utils openssh-server htop tmux emacs24-nox wget less
+
+echo "127.0.0.1 localhost" > /etc/hosts
+exit

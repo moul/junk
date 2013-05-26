@@ -89,6 +89,7 @@ installcask fluid
 installcask i-stumbler
 installcask chromium
 installcask tunnelblick
+installcask viscosity
 installcask keepass-x
 installcask mailplane
 installcask one-password

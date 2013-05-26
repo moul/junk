@@ -87,6 +87,8 @@ installcask cyberduck
 installcask f-lux
 installcask fluid
 installcask i-stumbler
+installcask chromium
+installcask tunnelblick
 installcask keepass-x
 installcask mailplane
 installcask one-password

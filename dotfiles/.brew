@@ -103,6 +103,17 @@ installcask google-drive
 installcask zap-proxy
 installcask picasa
 installcask team-viewer
+installcask ap-grapher
+installcask app-cleaner
+installcask app-zapper
+installcask adium
+installcask steam
+installcask boot-x-changer
+installcask chicken
+installcask colloquy
+installcask ireadfast
+
+
 
 # Remove outdated versions from the cellar
 brew cleanup

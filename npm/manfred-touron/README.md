@@ -7,5 +7,5 @@ npm install manfred-touron
 
 ```javascript
 var mt = require('manfred-touron');
-console.log(mt.firstname);
+console.log(mt.firstName);
 ```

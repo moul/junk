@@ -1,0 +1,22 @@
+{
+  "name": "manfred-touron",
+  "version": "0.0.1",
+  "description": "Manfred Touron as an Object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moul/junk.git"
+  },
+  "keywords": [
+    "Manfred",
+    "Touron",
+    "cv",
+    "person",
+    "npm-as-a-backend"
+  ],
+  "author": "Manfred Touron <m@42.am>",
+  "license": "MIT"
+}

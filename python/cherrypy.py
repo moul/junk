@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+
+# curl http://bob:bib@localhost:8080/?bub=bab
+
 import cherrypy
 
 class Custom(object):

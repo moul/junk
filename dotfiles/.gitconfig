@@ -1,6 +1,8 @@
 [core]
 	quotepath = false
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
+	editor = emacs
+	pager = less
 [user]
 	name = Manfred Touron
 	email = m@42.am
@@ -22,3 +24,5 @@
 	autosetuprebase = always
 [branch "master"]
 	rebase = true
+[help]
+	autocorrect = 1

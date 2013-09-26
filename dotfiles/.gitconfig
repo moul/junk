@@ -1,28 +1,51 @@
 [core]
-	quotepath = false
-	whitespace = trailing-space,space-before-tab,indent-with-non-tab
-	editor = emacs
-	pager = less
+        quotepath = false
+        whitespace = trailing-space,space-before-tab,indent-with-non-tab
+        editor = emacs
+        pager = less
+        excludesfile = ~/.gitignore
+[achievement]
+        upload = false
 [user]
-	name = Manfred Touron
-	email = m@42.am
+        name = Manfred Touron
+        email = m@42.am
+[github]
+        user = moul
 [alias]
-	st = status
-	oneline = log --pretty=oneline --abbrev-commit --graph --decorate
-	svnpull = svn rebase
-	svnpush = svn dcommit
-	undo = git reset --soft HEAD^
-	amend = commit --amend
-	fulldiff = "!git diff --stat; git diff --name-status; git diff --cached"
+        st = status
+        oneline = log --pretty=oneline --abbrev-commit --graph --decorate
+        svnpull = svn rebase
+        svnpush = svn dcommit
+        undo = git reset --soft HEAD^
+        amend = commit --amend
+        fulldiff = "!git diff --stat; git diff --name-status; git diff --cached"
 [color]
-	diff = auto
-	ui = auto
-	status = auto
-	interactive = auto
-	branch = auto
+        diff = auto
+        ui = auto
+        status = auto
+        interactive = auto
+        branch = auto
+[status]
+        showUntrackedFiles = normal
+[merge]
+        tool = ksdiff
+        #tool = opendiff
+[mergetool "ksdiff"]
+        #cmd = "ksdiff -w \"$BASE\" \"$LOCAL\" \"$REMOTE\" $MERGED\""
+        cmd = "ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot"
+[mergetool "sourcetree"]
+        cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+        trustExitCode = true
+[diff]
+        tool = ksdiff
+[difftool "ksdiff"]
+        #cmd = "ksdiff \"$LOCAL\" \"$REMOTE\""
+        cmd = "ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\""
+[difftool]
+        prompt = false
 [branch]
-	autosetuprebase = always
+        autosetuprebase = always
 [branch "master"]
-	rebase = true
+        rebase = true
 [help]
-	autocorrect = 1
+        autocorrect = 1

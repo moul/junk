@@ -20,3 +20,5 @@
 	branch = auto
 [branch]
 	autosetuprebase = always
+[branch "master"]
+	rebase = true

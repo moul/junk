@@ -1,0 +1,22 @@
+[core]
+	quotepath = false
+	whitespace = trailing-space,space-before-tab,indent-with-non-tab
+[user]
+	name = Manfred Touron
+	email = m@42.am
+[alias]
+	st = status
+	oneline = log --pretty=oneline --abbrev-commit --graph --decorate
+	svnpull = svn rebase
+	svnpush = svn dcommit
+	undo = git reset --soft HEAD^
+	amend = commit --amend
+	fulldiff = "!git diff --stat; git diff --name-status; git diff --cached"
+[color]
+	diff = auto
+	ui = auto
+	status = auto
+	interactive = auto
+	branch = auto
+[branch]
+	autosetuprebase = always

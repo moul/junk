@@ -19,7 +19,7 @@
         undo = git reset --soft HEAD^
         amend = commit --amend
         fulldiff = "!git diff --stat; git diff --name-status; git diff --cached"
-        full-status = '!cd ${GIT_PREFIX:-.}; find . -type d -name ".git" -execdir printf "\033[0;34m" \; -execdir pwd \; -execdir printf "\033[0;29m" \; -execdir git status . \; -execdir printf "\n" \;'
+	full-status = "!cd ${GIT_PREFIX:-.}; git status .; find * -type d -name .git -execdir printf \"\\033[0;34m\" \\; -execdir pwd \\; -execdir printf \"\\033[0;29m\" \\; -execdir git status . \\; -execdir printf \"\\n\" \\;"
 [color]
         diff = auto
         ui = auto

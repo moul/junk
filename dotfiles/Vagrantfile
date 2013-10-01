@@ -16,10 +16,14 @@ Vagrant::Config.run do |config|
   pkg_cmd = "[ -f /usr/bin/git ] || ("
 
   # Install basic env, git/mercurial, docker dependencies, emacs, zsh, etc
-  pkg_cmd << "apt-get update -qq; export DEBIAN_FRONTEND=noninteractive; apt-get install -q -y linux-image-extra-3.8.0-19-generic build-essential mercurial git lxc bsdtar htop most emacs24 zsh tmux; "
+  pkg_cmd << "apt-get update -qq; export DEBIAN_FRONTEND=noninteractive; apt-get install -q -y linux-image-extra-3.8.0-19-generic build-essential mercurial git lxc aufs-tools bsdtar htop most emacs24 zsh tmux ngrep tcpdump unzip ntp; "
 
   # Change default shell
   pkg_cmd << "chsh -s /bin/zsh vagrant; "
+
+  # Create docker group and add vagrant user to it
+  pkg_cmd << "groupadd docker; "
+  pkg_cmd << "usermod -a -G docker vagrant; "
 
   # Retrieve the dotfiles config
   #pkg_cmd << "git clone https://github.com/creack/dotfiles /home/vagrant/.dotfiles; cd /home/vagrant/.dotfiles; "
@@ -43,6 +47,8 @@ Vagrant::Config.run do |config|
   pkg_cmd << "go get github.com/nsf/gocode; "
   # Install goflymake
   pkg_cmd << "go get github.com/dougm/goflymake; "
+  # Install gocov
+  pkg_cmd << "go get github.com/axw/gocov/gocov; "
 
   # Checkout docker sources
   pkg_cmd << "go get github.com/dotcloud/docker; ln -s /home/vagrant/go/src/github.com/dotcloud/docker /home/vagrant/docker; "
@@ -60,7 +66,7 @@ Vagrant::VERSION >= "1.1.0" and Vagrant.configure("2") do |config|
   # Specific virtual box config: use only 1 CPU
   config.vm.provider "virtualbox" do |v|
     v.name = BOX_NAME
-    v.customize ["modifyvm", :id, "--cpus", "1"]
+    v.customize ["modifyvm", :id, "--cpus", "4"]
   end
 
   config.vm.network  :private_network, ip: "192.168.142.142"

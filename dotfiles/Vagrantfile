@@ -69,5 +69,5 @@ Vagrant::VERSION >= "1.1.0" and Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--cpus", "4"]
   end
 
-  config.vm.network  :private_network, ip: "192.168.142.142"
+#  config.vm.network  :private_network, ip: "192.168.142.142"
 end

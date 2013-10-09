@@ -7,19 +7,21 @@ GIT_EMAIL = ENV['GIT_EMAIL']
 
 
 Vagrant::Config.run do |config|
-  config.vm.define :junk do |junk_config|
-    junk_config.vm.box = 'junk'
-    junk_config.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box'
+  config.vm.define :junk, primary: true do |junk|
+    junk.vm.box = 'junk'
+    junk.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box'
+
+    junk.vm.forward_port 8080, 4567
   end
 
-  config.vm.define :coreos do |coreos_config|
-    coreos_config.vm.box = 'coreos'
-    coreos_config.vm.box_url = 'http://storage.core-os.net/coreos/amd64-generic/dev-channel/coreos_production_vagrant.box'
+  config.vm.define :coreos do |coreos|
+    coreos.vm.box = 'coreos'
+    coreos.vm.box_url = 'http://storage.core-os.net/coreos/amd64-generic/dev-channel/coreos_production_vagrant.box'
   end
 
-  config.vm.define :docker do |docker_config|
-    docker_config.vm.box = 'docker'
-    docker_config.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box'
+  config.vm.define :docker_dev do |docker_dev|
+    docker_dev.vm.box = 'docker'
+    docker_dev.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box'
 
     ### Running first time
     pkg_cmd = "[ -f /usr/bin/git ] || ("
@@ -67,6 +69,50 @@ Vagrant::Config.run do |config|
 
     pkg_cmd << "); "
 
-    docker_config.vm.provision :shell, :inline => pkg_cmd
+    docker_dev.vm.provision :shell, :inline => pkg_cmd
   end
+
+  config.vm.define :docker do |docker|
+    # Setup virtual machine box. This VM configuration code is always executed.
+    docker.vm.box = ENV['BOX_NAME'] || "ubuntu"
+    docker.vm.box_url = ENV['BOX_URI'] || "http://files.vagrantup.com/precise64.box"
+
+    docker.ssh.forward_agent = true
+
+    # Provision docker and new kernel if deployment was not done.
+    # It is assumed Vagrant can successfully launch the provider instance.
+    if Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/default/*/id").empty?
+      # Add lxc-docker package
+      pkg_cmd = "wget -q -O - https://get.docker.io/gpg | apt-key add -;" \
+        "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list;" \
+        "apt-get update -qq; apt-get install -q -y --force-yes lxc-docker; "
+      # Add Ubuntu raring backported kernel
+      pkg_cmd << "apt-get update -qq; apt-get install -q -y linux-image-generic-lts-raring; "
+      # Add guest additions if local vbox VM. As virtualbox is the default provider,
+      # it is assumed it won't be explicitly stated.
+      if ENV["VAGRANT_DEFAULT_PROVIDER"].nil? && ARGV.none? { |arg| arg.downcase.start_with?("--provider") }
+        pkg_cmd << "apt-get install -q -y linux-headers-generic-lts-raring dkms; " \
+          "echo 'Downloading VBox Guest Additions...'; " \
+          "wget -q http://dlc.sun.com.edgesuite.net/virtualbox/4.2.12/VBoxGuestAdditions_4.2.12.iso; "
+        # Prepare the VM to add guest additions after reboot
+        pkg_cmd << "echo -e 'mount -o loop,ro /home/vagrant/VBoxGuestAdditions_4.2.12.iso /mnt\n" \
+          "echo yes | /mnt/VBoxLinuxAdditions.run\numount /mnt\n" \
+            "rm /root/guest_additions.sh; ' > /root/guest_additions.sh; " \
+          "chmod 700 /root/guest_additions.sh; " \
+          "sed -i -E 's#^exit 0#[ -x /root/guest_additions.sh ] \\&\\& /root/guest_additions.sh#' /etc/rc.local; " \
+          "echo 'Installation of VBox Guest Additions is proceeding in the background.'; " \
+          "echo '\"vagrant reload\" can be used in about 2 minutes to activate the new guest additions.'; "
+      end
+      # Activate new kernel
+      pkg_cmd << "shutdown -r +1; "
+      docker.vm.provision :shell, :inline => pkg_cmd
+    end
+
+    (49000..49900).each do |port|
+      docker.vm.forward_port port, port
+      #docker.vm.network :forwarded_port, :host => port, :guest => port
+    end
+
+  end
+
 end

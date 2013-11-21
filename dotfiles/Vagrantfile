@@ -108,10 +108,13 @@ Vagrant::Config.run do |config|
       docker.vm.provision :shell, :inline => pkg_cmd
     end
 
-    (49000..49900).each do |port|
-      docker.vm.forward_port port, port
-      #docker.vm.network :forwarded_port, :host => port, :guest => port
-    end
+    # (49000..49900).each do |port|
+    #   docker.vm.forward_port port, port
+    #   #docker.vm.network :forwarded_port, :host => port, :guest => port
+    # end
+    docker.vm.network :hostonly, "192.168.216.2", :netmask => "255.255.0.0"
+    #docker.vm.network :bridged, :bridge => "en0: Ethernet"
+    #docker.vm.network "public_network", ip: "192.168.217.2"
 
   end
 

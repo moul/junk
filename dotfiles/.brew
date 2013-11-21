@@ -46,6 +46,8 @@ brew install tree
 brew install webkit2png
 brew install zopfli
 brew install grc
+brew install emacs
+brew install fswatch
 
 brew tap homebrew/versions
 brew install lua52

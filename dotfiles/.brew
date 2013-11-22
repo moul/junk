@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+function installcask() {
+    if brew cask info "${@}" | grep "Not installed" > /dev/null; then
+        brew cask install "${@}"
+    else
+        echo "${@} is already installed."
+    fi
+}
+
 # Make sure we’re using the latest Homebrew
 brew update
 
@@ -9,13 +17,10 @@ brew upgrade
 # Install GNU core utilities (those that come with OS X are outdated)
 brew install coreutils
 echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew install findutils
-# Install Bash 4
-brew install bash
 
-# Install wget with IRI support
-brew install wget --enable-iri
+brew install findutils # find, locate, updatedb, xargs, g-prefixed
+brew install bash # bash 4
+brew install wget --enable-iri # wget with iri
 
 # Install RingoJS and Narwhal
 # Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
@@ -48,6 +53,7 @@ brew install zopfli
 brew install grc
 brew install emacs
 brew install fswatch
+brew install mobile-shell
 
 brew tap homebrew/versions
 brew install lua52
@@ -56,13 +62,6 @@ brew install lua52
 brew tap phinze/homebrew-cask
 brew install brew-cask
 
-function installcask() {
-         if brew cask info "${@}" | grep "Not installed" > /dev/null; then
-            brew cask install "${@}"
-            else
-                echo "${@} is already installed."
-                fi
-}
 
 installcask dropbox
 installcask google-chrome
@@ -79,9 +78,8 @@ installcask transmission
 installcask ukelele
 installcask virtualbox
 installcask vlc
+installcask balsamiq-mockups
 
-# moul
-brew install mobile-shell
 installcask adobe-air
 installcask alfred
 installcask chromium
@@ -116,7 +114,6 @@ installcask chicken
 installcask colloquy
 installcask ireadfast
 installcask vagrant
-
 
 # Remove outdated versions from the cellar
 brew cleanup

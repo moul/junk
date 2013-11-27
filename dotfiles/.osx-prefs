@@ -1,0 +1,169 @@
+#!/bin/sh
+
+set -x
+
+# Disable window animations
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+# Enable repeat on keydown
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Disable webkit homepage
+defaults write org.webkit.nightly.WebKit StartPageDisabled -bool true
+
+# Use current directory as default search scope in Finder
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Show Path bar in Finder
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Show Status bar in Finder
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Enable AirDrop over Ethernet and on unsupported Macs running Lion
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 0.02
+
+# Set a shorter Delay until key repeat
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
+
+# Disable disk image verification
+defaults write com.apple.frameworks.diskimages skip-verify -bool true &&
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true &&
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+# Disable Safari’s thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+# Disable the Ping sidebar in iTunes
+defaults write com.apple.iTunes disablePingSidebar -bool true
+
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Disable ping dropdowns
+defaults write com.apple.iTunes hide-ping-dropdown true
+
+# enable half star rating in itunes
+defaults write com.apple.iTunes allow-half-stars -bool TRUE
+
+# disable the file extension change warning
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# set an ultra-fast dock hide & display animation
+defaults write com.apple.dock autohide-time-modifier -float 0.2
+
+# remove the auto-hidig dock delay
+defaults write com.apple.Dock autohide-delay -float 0
+
+# change the default screen shot file name
+defaults write com.apple.screencapture name "$(hostname -s) - Screen Shot"
+
+# speed up mission control animation
+defaults write com.apple.dock expose-animation-duration -float 0.2
+
+# disable launchpad fade transition effect
+defaults write com.apple.dock springboard-show-duration -int 0
+defaults write com.apple.dock springboard-hide-duration -int 0
+
+# show a now playing itunes notification 
+defaults write com.apple.dock itunes-notifications -bool TRUE
+
+# show & mount hidden partitions with disk utility
+defaults write com.apple.DiskUtility DUDebugMenuEnabled 1
+
+# enable full keyboard access for all controls (enable tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+#enable the 2d dock
+defaults write com.apple.dock no-glass -bool true
+
+# disable menubar transparency
+defaults write -g AppleEnableMenuBarTransparency -bool false
+
+# Enable spring loading for all Dock items
+defaults write enable-spring-load-actions-on-all-items -bool true
+# Disable press-and-hold for keys in favor of key repeat
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable window animations
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+# Automatically open a new Finder window when a volume is mounted
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Disable Safari’s thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeDebugMenu -bool true
+
+# Disable send and reply animations in Mail.app
+defaults write com.apple.Mail DisableReplyAnimations -bool true
+defaults write com.apple.Mail DisableSendAnimations -bool true
+
+# Disable Resume system-wide
+defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
+
+# Enable Dashboard dev mode (allows keeping widgets on the desktop)
+defaults write com.apple.dashboard devmode -bool true
+
+
+# enable the mac app store's element inspector
+defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+
+
+# disable the character accent menu and enable key repeat
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# disable mail animations
+defaults write com.apple.Mail DisableReplyAnimations -bool YES
+defaults write com.apple.Mail DisableSendAnimations -bool YES
+
+# disable the new window animatino
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
+
+# show only currently active apps
+defaults write com.apple.dock static-only -bool TRUE
+#defaults write com.apple.dock static-only -bool FALSE
+
+# Allow to load custom ipcc thrugh itunes
+defaults write com.apple.iTunes carrier-testing -bool TRUE
+
+# change the time machine backup schedule
+sudo defaults write /System/Library/LaunchDaemons/com.apple.backupd-auto StartInterval -int 14400
+
+# Disable local Time Machine backups
+sudo tmutil disablelocal
+
+# show system info, hostname & version on login screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+
+# Disable Automatic Termination
+defaults write -g NSDisableAutomaticTermination -bool yes
+
+
+# Kill affected applications
+killall Safari
+killall Finder
+killall Dock
+killall Mail

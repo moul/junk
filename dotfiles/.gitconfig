@@ -1,9 +1,11 @@
 [core]
         quotepath = false
-        whitespace = trailing-space,space-before-tab,indent-with-non-tab
+        whitespace = trailing-space,space-before-tab,indent-with-non-tab,fix
         editor = emacs
         pager = less
         excludesfile = ~/.gitignore
+        autocrlf = input
+        trustctime = false
 [achievement]
         upload = false
 [user]
@@ -21,17 +23,23 @@
         fulldiff = "!git diff --stat; git diff --name-status; git diff --cached"
 	full-status = "!cd ${GIT_PREFIX:-.}; git status .; find . -type d -name .git -execdir printf \"\\033[0;34m\" \\; -execdir pwd \\; -execdir printf \"\\033[0;29m\" \\; -execdir git status . \\; -execdir printf \"\\n\" \\;"
 	full-fetch = "!cd ${GIT_PREFIX:-.}; find . -type d -name .git -execdir printf \"\\033[0;34m\" \\; -execdir pwd \\; -execdir printf \"\\033[0;29m\" \\; -execdir git fetch \\; -execdir printf \"\\n\" \\;"
+        assume = update-index --assume-unchanged
+        unassume = update-index --no-assume-unchanged
+        assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+        ours = "!f() { git checkout --ours $@ && git add $@; }; f"
+        theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 [color]
-        diff = auto
-        ui = auto
-        status = auto
-        interactive = auto
-        branch = auto
+	diff = auto
+	ui = auto
+	status = auto
+	interactive = auto
+	branch = auto
 [status]
         showUntrackedFiles = normal
 [merge]
         tool = ksdiff
         #tool = opendiff
+        log = true
 [mergetool "ksdiff"]
         #cmd = "ksdiff -w \"$BASE\" \"$LOCAL\" \"$REMOTE\" $MERGED\""
         cmd = "ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot"
@@ -40,6 +48,8 @@
         trustExitCode = true
 [diff]
         tool = ksdiff
+        renames = copies
+        algorithm = patience
 [difftool "ksdiff"]
         #cmd = "ksdiff \"$LOCAL\" \"$REMOTE\""
         cmd = "ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\""
@@ -54,3 +64,13 @@
 
 [push]
 	default = simple
+[url "git@onouo.com:"]
+	insteadOf = "onouo:"
+[url "git@pathwar.net:"]
+	insteadOf = "pathwar:"
+[url "git@github.com:"]
+        insteadOf = "gh:"
+[url "git@gist.github.com:"]
+        insteadOf = "gst:"
+#[credential]
+#	helper = osxkeychain

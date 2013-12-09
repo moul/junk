@@ -1,9 +1,13 @@
 ## VARIABLES
 BREW_PREFIX=$(brew --prefix)
 
+## ENVIRONMENT
+export PYTHONDONTWRITEBYTECODE=1
+
 ## ALIASES
 alias venv=". ~/venv/bin/activate"
 alias emacs="emacs -nw"
+alias brew="brew growl"
 
 ## GIT ACHIEVEMENTS
 if [ -d ~/Git/watch/icefox/git-achievements ]; then

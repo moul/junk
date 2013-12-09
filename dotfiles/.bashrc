@@ -3,16 +3,30 @@ BREW_PREFIX=$(brew --prefix)
 
 
 ## ENVIRONMENT
-export PYTHONDONTWRITEBYTECODE=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=emacs
-
+export CDPATH=".:~"
+#export HOSTFILE=~/.hosts
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONSTARTUP=~/.pythonrc
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+export DJANGO_SETTINGS_MODULE="settings"
 
 ## ALIASES
 alias venv=". ~/venv/bin/activate"
 alias emacs="emacs -nw"
 alias brew="brew growl"
+
+
+## HISTORY
+HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+#HISTCONTROL=ignoreboth
+shopt -s histappend
+export HISTSIZE=20000
+export HISTFILESIZE=120000
+shopt -s checkwinsize
 
 
 ## PATH PREFIX

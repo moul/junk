@@ -15,6 +15,19 @@ alias emacs="emacs -nw"
 alias brew="brew growl"
 
 
+## PATH PREFIX
+for path in \
+    /usr/local/bin \
+    /usr/local/sbin \
+    $HOME/mbin \
+    $HOME/mbin2 \
+    ; do
+    if [ -d $path ]; then
+        export PATH="$path:$PATH"
+    fi
+done
+
+
 ## GIT ACHIEVEMENTS
 if [ -d ~/Git/watch/icefox/git-achievements ]; then
     alias git="~/Git/watch/icefox/git-achievements/git-achievements"

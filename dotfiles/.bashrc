@@ -17,7 +17,7 @@ export DJANGO_SETTINGS_MODULE="settings"
 ## ALIASES
 alias venv=". ~/venv/bin/activate"
 alias emacs="emacs -nw"
-alias brew="brew growl"
+#alias brew="brew growl"
 
 
 ## HISTORY
@@ -31,6 +31,7 @@ shopt -s checkwinsize
 
 ## PATH PREFIX
 for path in \
+    /usr/local/share/npm/bin \
     /usr/local/bin \
     /usr/local/sbin \
     $HOME/mbin \
@@ -58,9 +59,9 @@ esac
 force_color_prompt=yes
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	color_prompt=yes
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 if [ "$color_prompt" = yes ]; then

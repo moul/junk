@@ -29,7 +29,14 @@ etc_hosts_ips() {
 ssh_config_hosts() {
     COMPREPLY=($(cat ~/.ssh/config | sed '/^[hH]ost\ [a-zA-Z0-9\._-]*$/!d;s/^.ost\ //g' | grep "^${COMP_WORDS[COMP_CWORD]}" | sort | uniq))
 }
-
+ssh_knownhosts_hosts() {
+    COMPREPLY=($(cat ~/.ssh/known_hosts | \
+        cut -f 1 -d ' '  | \
+        sed -e s/,.*//g | \
+        grep -v ^# | \
+        uniq | \
+        grep -v "\["))
+}
 
 ## HISTORY
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups

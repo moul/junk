@@ -91,8 +91,9 @@ unset color_prompt force_color_prompt
 
 
 ## BASH COMPLETION
-complete -F etc_hosts_ips ping
-complete -F ssh_config_hosts ssh scp csshX ssh-manfred.sh ssh_master csshx pssh logssh cssh mosh mosh-manfred.sh scp rsync hostname
+complete -A hostname -F etc_hosts_ips ping
+complete -A hostname -F ssh_config_hosts ssh csshX ssh-manfred.sh ssh_master csshx pssh logssh cssh mosh mosh-manfred.sh hostname
+complete -A hostname -A file -F ssh_config_hosts scp rsync
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi

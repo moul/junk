@@ -7,17 +7,28 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=emacs
 export CDPATH=".:~"
-#export HOSTFILE=~/.hosts
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONSTARTUP=~/.pythonrc
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export DJANGO_SETTINGS_MODULE="settings"
+#export HOSTFILE=~/.hosts
+
 
 ## ALIASES
 alias venv=". ~/venv/bin/activate"
 alias emacs="emacs -nw"
 #alias brew="brew growl"
+
+
+## FUNCTIONS
+etc_hosts_ips() {
+    COMPREPLY=($(sed 's/^\([0-9\.]*\).*$/\1/g;/^$/d' /etc/hosts | sort | uniq | grep "^${COMP_WORDS[COMP_CWORD]}"))
+}
+
+ssh_config_hosts() {
+    COMPREPLY=($(cat ~/.ssh/config | sed '/^[hH]ost\ [a-zA-Z0-9\._-]*$/!d;s/^.ost\ //g' | grep "^${COMP_WORDS[COMP_CWORD]}" | sort | uniq))
+}
 
 
 ## HISTORY
@@ -80,6 +91,8 @@ unset color_prompt force_color_prompt
 
 
 ## BASH COMPLETION
+complete -F etc_hosts_ips ping
+complete -F ssh_config_hosts ssh scp csshX ssh-manfred.sh ssh_master csshx pssh logssh cssh mosh mosh-manfred.sh scp rsync hostname
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
@@ -97,6 +110,9 @@ for dir in /usr/local/etc/bash_completion.d; do
         done
     fi
 done
+COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
+export COMP_WORDBREAKS
 
 
 ## LOAD DEPENDENCIES

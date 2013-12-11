@@ -94,6 +94,7 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+PS1_PREFIX=""
 unset color_prompt force_color_prompt
 
 
@@ -127,12 +128,19 @@ export COMP_WORDBREAKS
 for file in \
     "$BREW_PREFIX/etc/bash_completion" \
     "$BREW_PREFIX/etc/grc.bashrc" \
+    "$HOME/.bash_local" \
     "$HOME/.bash_private" \
     ; do
     if [ -f $file ]; then
         . $file
     fi
 done
+
+
+## "modularity"
+PS1="$PS1_PREFIX$PS1"
+unset PS1_PREFIX
+
 
 
 ## CLEAN

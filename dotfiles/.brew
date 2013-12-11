@@ -54,6 +54,9 @@ brew install grc
 brew install emacs
 brew install fswatch
 brew install mobile-shell
+brew install namebench
+brew install dnstop
+brew install graphviz
 
 brew tap homebrew/versions
 brew install lua52

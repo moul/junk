@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -z $1 ]; then
+    stream-adventure
+    exit 0
+fi
+
 #set -x
 
 export NODE_PATH=$NODE_PATH:$HOME/node_modules/
@@ -18,5 +23,8 @@ CMD2="clear; stream-adventure verify $TMPDIR/$LEVEL.js"
 
 bash -c "$CMD1"
 bash -c "$CMD2"
-fswatch . "$CMD1" &
-fswatch $TMPDIR "$CMD2"
+
+if [ "$2" = "watch" ]; then
+    fswatch . "$CMD1" &
+    fswatch $TMPDIR "$CMD2"
+fi

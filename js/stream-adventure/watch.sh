@@ -2,6 +2,8 @@
 
 #set -x
 
+export NODE_PATH=$NODE_PATH:$HOME/node_modules/
+
 LEVEL=$(echo $1 | sed 's/\.coffee//;s/\.js//')
 
 trap 'kill 0' SIGINT SIGTERM EXIT

@@ -16,7 +16,8 @@ fi
 
 #set -x
 
-LEVEL=$(echo $1 | sed 's/\.coffee//;s/\.js//')
+FULL=$(echo $1 | sed 's/\.coffee//;s/\.js//')
+LEVEL=$(echo "$FULL" | cut -d'.' -f1)
 
 LEVEL_UPPER=$(echo "$LEVEL" | sed 's/_/ /g;y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/')
 echo $LEVEL_UPPER
@@ -26,8 +27,8 @@ stream-adventure select "$LEVEL_UPPER" >/dev/null
 TMPDIR=/tmp/stream-adventure-compile
 mkdir -p $TMPDIR
 
-CMD1="coffee -o $TMPDIR/ -c $LEVEL.coffee"
-CMD2="clear; stream-adventure verify $TMPDIR/$LEVEL.js"
+CMD1="coffee -o $TMPDIR/ -c $FULL.coffee"
+CMD2="clear; stream-adventure verify $TMPDIR/$FULL.js"
 
 bash -c "$CMD1"
 bash -c "$CMD2"

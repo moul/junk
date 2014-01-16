@@ -118,4 +118,37 @@ Vagrant::Config.run do |config|
 
   end
 
+
+  config.vm.define :ubuntu_01 do |ubuntu|
+    ubuntu_network_common ubuntu
+  end
+  config.vm.define :ubuntu_02 do |ubuntu|
+    ubuntu_network_common ubuntu
+  end
+  config.vm.define :ubuntu_03 do |ubuntu|
+    ubuntu_network_common ubuntu
+  end
+  config.vm.define :ubuntu_04 do |ubuntu|
+    ubuntu_network_common ubuntu
+  end
+  config.vm.define :ubuntu_05 do |ubuntu|
+    ubuntu_network_common ubuntu
+  end
+
+end
+
+
+
+def ubuntu_network_common(vm)
+  vm.vm.box = ENV['BOX_NAME'] || "ubuntu"
+  vm.vm.box_url = ENV['BOX_URI'] || "http://files.vagrantup.com/precise64.box"
+
+  pkg_cmd = "apt-get update -qq;" \
+    "apt-get install -q -y htop;" \
+    "apt-get install -q -y tmux;" \
+    "apt-get install -q -y emacs24-nox;" \
+    "apt-get install -q -y openssh-server;" \
+    "apt-get install -q -y git;" \
+    "apt-get install -q -y python-dev;"
+  vm.vm.provision :shell, :inline => pkg_cmd
 end

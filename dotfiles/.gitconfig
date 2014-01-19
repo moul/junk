@@ -11,6 +11,7 @@
 [user]
         name = Manfred Touron
         email = m@42.am
+	signingkey = CABAE1B5
 [github]
         user = moul
 [alias]

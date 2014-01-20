@@ -119,42 +119,46 @@ Vagrant::configure("2") do |config|
   end
 
 
-  config.vm.define :ubuntu_01 do |ubuntu|
-    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22001
-    ubuntu.vm.network :private_network, ip: "192.168.230.10", adapter: 1
-    ubuntu.vm.network :private_network, ip: "192.168.231.10", adapter: 2
-    ubuntu.vm.network :private_network, ip: "192.168.232.10", adapter: 3
-    ubuntu.vm.network :private_network, ip: "192.168.233.10", adapter: 4
-    ubuntu_network_common ubuntu
+  config.vm.define :ubuntu_01 do |config|
+    config.vm.network :private_network, ip: "192.168.230.10"
+    config.vm.network :private_network, ip: "192.168.231.10"
+    config.vm.network :private_network, ip: "192.168.232.10"
+    config.vm.network :private_network, ip: "192.168.233.10"
+    #config.vm.network :forwarded_port, guest: 22, host: 22001, guest_ip: "192.168.230.10"
+    ubuntu_network_common config, "ubuntu-01"
   end
-  config.vm.define :ubuntu_02 do |ubuntu|
-    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22002
-    ubuntu.vm.network :private_network, ip: "192.168.230.20", adapter: 1
-    ubuntu_network_common ubuntu
+  config.vm.define :ubuntu_02 do |config|
+    config.vm.network :private_network, ip: "192.168.230.20"
+    #config.vm.network :forwarded_port, guest: 22, host: 22002, guest_ip: "192.168.230.20"
+    ubuntu_network_common config, "ubuntu-02"
   end
-  config.vm.define :ubuntu_03 do |ubuntu|
-    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22003
-    ubuntu.vm.network :private_network, ip: "192.168.231.20", adapter: 1
-    ubuntu_network_common ubuntu
+  config.vm.define :ubuntu_03 do |config|
+    config.vm.network :private_network, ip: "192.168.231.20"
+    #config.vm.network :forwarded_port, guest: 22, host: 22003, guest_ip: "192.168.231.20"
+    ubuntu_network_common config, "ubuntu-03"
   end
-  config.vm.define :ubuntu_04 do |ubuntu|
-    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22004
-    ubuntu.vm.network :private_network, ip: "192.168.232.20", adapter: 1
-    ubuntu_network_common ubuntu
+  config.vm.define :ubuntu_04 do |config|
+    config.vm.network :private_network, ip: "192.168.232.20"
+    #config.vm.network :forwarded_port, guest: 22, host: 22004, guest_ip: "192.168.232.20"
+    ubuntu_network_common config, "ubuntu-04"
   end
-  config.vm.define :ubuntu_05 do |ubuntu|
-    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22005
-    ubuntu.vm.network :private_network, ip: "192.168.233.20", adapter: 1
-    ubuntu_network_common ubuntu
+  config.vm.define :ubuntu_05 do |config|
+    config.vm.network :private_network, ip: "192.168.233.20"
+    #config.vm.network :forwarded_port, guest: 22, host: 22005, guest_ip: "192.168.233.20"
+    ubuntu_network_common config, "ubuntu-05"
   end
 
 end
 
 
 
-def ubuntu_network_common(vm)
-  vm.vm.box = ENV['BOX_NAME'] || "ubuntu"
-  vm.vm.box_url = ENV['BOX_URI'] || "http://files.vagrantup.com/precise64.box"
+def ubuntu_network_common(_config, hostname)
+  _config.vm.box = ENV['BOX_NAME'] || "ubuntu"
+  _config.vm.hostname = hostname
+  _config.vm.box_url = ENV['BOX_URI'] || "http://files.vagrantup.com/precise64.box"
+
+  #_config.vm.network :public_network, bridge: "en0: Ethernet"
+  #_config.vm.network "hostonly"
 
   pkg_cmd = "apt-get update -qq;" \
     "apt-get install -q -y htop;" \
@@ -163,5 +167,5 @@ def ubuntu_network_common(vm)
     "apt-get install -q -y openssh-server;" \
     "apt-get install -q -y git;" \
     "apt-get install -q -y python-dev;"
-  vm.vm.provision :shell, :inline => pkg_cmd
+  _config.vm.provision :shell, :inline => pkg_cmd
 end

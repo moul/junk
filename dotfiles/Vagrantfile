@@ -6,7 +6,7 @@ GIT_USERNAME = ENV['GIT_USERNAME']
 GIT_EMAIL = ENV['GIT_EMAIL']
 
 
-Vagrant::Config.run do |config|
+Vagrant::configure("2") do |config|
   config.vm.define :junk, primary: true do |junk|
     junk.vm.box = 'junk'
     junk.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box'
@@ -112,7 +112,7 @@ Vagrant::Config.run do |config|
     #   docker.vm.forward_port port, port
     #   #docker.vm.network :forwarded_port, :host => port, :guest => port
     # end
-    docker.vm.network :hostonly, "192.168.216.2", :netmask => "255.255.0.0"
+    #docker.vm.network :hostonly, "192.168.216.2", :netmask => "255.255.0.0"
     #docker.vm.network :bridged, :bridge => "en0: Ethernet"
     #docker.vm.network "public_network", ip: "192.168.217.2"
 
@@ -120,18 +120,31 @@ Vagrant::Config.run do |config|
 
 
   config.vm.define :ubuntu_01 do |ubuntu|
+    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22001
+    ubuntu.vm.network :private_network, ip: "192.168.230.10", adapter: 1
+    ubuntu.vm.network :private_network, ip: "192.168.231.10", adapter: 2
+    ubuntu.vm.network :private_network, ip: "192.168.232.10", adapter: 3
+    ubuntu.vm.network :private_network, ip: "192.168.233.10", adapter: 4
     ubuntu_network_common ubuntu
   end
   config.vm.define :ubuntu_02 do |ubuntu|
+    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22002
+    ubuntu.vm.network :private_network, ip: "192.168.230.20", adapter: 1
     ubuntu_network_common ubuntu
   end
   config.vm.define :ubuntu_03 do |ubuntu|
+    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22003
+    ubuntu.vm.network :private_network, ip: "192.168.231.20", adapter: 1
     ubuntu_network_common ubuntu
   end
   config.vm.define :ubuntu_04 do |ubuntu|
+    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22004
+    ubuntu.vm.network :private_network, ip: "192.168.232.20", adapter: 1
     ubuntu_network_common ubuntu
   end
   config.vm.define :ubuntu_05 do |ubuntu|
+    #ubuntu.vm.network :forwarded_port, guest: 22, host: 22005
+    ubuntu.vm.network :private_network, ip: "192.168.233.20", adapter: 1
     ubuntu_network_common ubuntu
   end
 

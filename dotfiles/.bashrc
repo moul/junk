@@ -11,7 +11,8 @@ export PYTHONDONTWRITEBYTECODE=1
 export PYTHONSTARTUP=~/.pythonrc
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export DJANGO_SETTINGS_MODULE="settings"
+#export DJANGO_SETTINGS_MODULE="settings"
+export DOCKER_HOST=tcp://172.16.42.43:4243
 #export HOSTFILE=~/.hosts
 
 

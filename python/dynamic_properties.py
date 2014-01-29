@@ -1,5 +1,6 @@
 class A(object):
     children = []
+    properties = {}
 
     def __init__(self, name):
         self.name = name
@@ -15,7 +16,16 @@ class A(object):
             #setattr(self, key, property(fget=child.__call__))
             #self.__dict__[key] = property(fget=child.__call__)
             #setattr(self.__class__, key, property(fget=child.__call__))
-            setattr(self.__class__, key, property(fget=child.prop))
+            #setattr(self.__class__, key, property(fget=child.prop))
+            #self.__dict__[key] = property(fget=child.prop)
+            self.properties[key] = child.prop
+            pass
+
+    def __getattr__(self, key):
+        if key == '__members__':
+            return self.properties.keys()
+        if key in self.properties:
+            return self.properties[key]()
 
 
 class B(object):
@@ -37,7 +47,7 @@ def print_a(a):
     print('-' * 80)
     print(a.name)
     print('  dir:  {}'.format([key for key in dir(a) if key[0] != '_']))
-    print('  dict: {}'.format(a.__dict__))
+    print('  dict: {}'.format(a.__dict__.keys()))
     for key in ['key42', 'key43', 'key44', 'key45']:
         try:
             print('    {}={}'.format(key, getattr(a, key)))

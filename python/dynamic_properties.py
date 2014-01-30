@@ -1,9 +1,9 @@
 class A(object):
     children = []
-    properties = {}
 
     def __init__(self, name):
         self.name = name
+        self.properties = {}
         print('{}: inited (address={})'.format(self.name, self))
 
     def register(self, child_name, cls, key, value, kind):
@@ -13,13 +13,7 @@ class A(object):
         if kind == 'method':
             self.__dict__[key] = child.__call__
         elif kind == 'property':
-            #setattr(self, key, property(fget=child.__call__))
-            #self.__dict__[key] = property(fget=child.__call__)
-            #setattr(self.__class__, key, property(fget=child.__call__))
-            #setattr(self.__class__, key, property(fget=child.prop))
-            #self.__dict__[key] = property(fget=child.prop)
             self.properties[key] = child.prop
-            pass
 
     def __getattr__(self, key):
         if key == '__members__':
@@ -72,6 +66,9 @@ def main():
     c.register('Tiffany', B, 'key44', 44, 'method')
     c.register('Barney', B, 'key45', 45, 'property')
     print_a(c)
+
+
+    print_a(a)
 
 
 if __name__ == "__main__":

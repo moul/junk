@@ -16,6 +16,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 #export DOCKER_HOST=tcp://127.0.0.1:14243
 export DOCKER_HOST=tcp://172.18.42.1:4243
 #export HOSTFILE=~/.hosts
+export GOPATH="$HOME/go"
 
 
 ## ALIASES

@@ -119,5 +119,9 @@ installcask colloquy
 installcask ireadfast
 installcask vagrant
 
+brew tap jimbojsb/launchrocket
+installcask launchrocket
+
+
 # Remove outdated versions from the cellar
 brew cleanup

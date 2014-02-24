@@ -64,14 +64,18 @@
         autocorrect = 1
 
 [push]
-	default = simple
+        default = simple
 [url "git@onouo.com:"]
-	insteadOf = "onouo:"
+        insteadOf = "onouo:"
 [url "git@pathwar.net:"]
-	insteadOf = "pathwar:"
+        insteadOf = "pathwar:"
 [url "git@github.com:"]
         insteadOf = "gh:"
 [url "git@gist.github.com:"]
         insteadOf = "gst:"
+
+[include]
+        path = ".gitconfig_private"
+
 #[credential]
-#	helper = osxkeychain
+#       helper = osxkeychain

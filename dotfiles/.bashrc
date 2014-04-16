@@ -53,6 +53,8 @@ shopt -s checkwinsize
 
 ## PATH PREFIX
 for path in \
+    $HOME/.cabal/bin \
+    $HOME/node_modules/.bin \
     /usr/local/share/npm/bin \
     /usr/local/bin \
     /usr/local/sbin \

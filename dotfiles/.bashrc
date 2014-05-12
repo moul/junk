@@ -7,8 +7,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=emacs
 export CDPATH=".:~"
-export PYTHONDONTWRITEBYTECODE=1
+#export PYTHONDONTWRITEBYTECODE=1
 export PYTHONSTARTUP=~/.pythonrc
+export WORKON_HOME=~/Envs
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 #export DJANGO_SETTINGS_MODULE="settings"
@@ -134,6 +137,7 @@ export COMP_WORDBREAKS
 for file in \
     "$BREW_PREFIX/etc/bash_completion" \
     "$BREW_PREFIX/etc/grc.bashrc" \
+    "$BREW_PREFIX//bin/virtualenvwrapper.sh" \
     "$HOME/.bash_local" \
     "$HOME/.bash_private" \
     ; do

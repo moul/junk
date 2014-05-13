@@ -147,8 +147,22 @@ for file in \
 done
 
 
-# PYENV
+# PYTHON
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+check_virtualenv() {
+    if [ -e .venv ]; then
+        env=`cat .venv`
+        if [ "$env" != "${VIRTUAL_ENV##*/}" ]; then
+            echo "Found .venv in directory. Calling: workon ${env}"
+            workon $env
+        fi
+    fi
+}
+venv_cd () {
+    builtin cd "$@" && check_virtualenv
+}
+check_virtualenv
+alias cd=venv_cd
 
 
 ## "modularity"

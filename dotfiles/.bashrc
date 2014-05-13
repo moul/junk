@@ -23,7 +23,7 @@ export GOPATH="$HOME/go"
 
 
 ## ALIASES
-alias venv=". ~/venv/bin/activate"
+#alias venv=". ~/venv/bin/activate"
 alias emacs="emacs -nw"
 #alias brew="brew growl"
 

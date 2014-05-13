@@ -139,9 +139,13 @@ installcask chicken
 installcask colloquy
 installcask ireadfast
 installcask vagrant
+installcask gitter
+installcask bit-slicer
 
 brew tap jimbojsb/launchrocket
 installcask launchrocket
+
+
 
 
 # Remove outdated versions from the cellar

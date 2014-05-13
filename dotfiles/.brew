@@ -41,6 +41,9 @@ brew install php54
 brew install ack
 #brew install exiv2
 brew install git
+brew install git-crypt
+brew install git-extras
+brew install gcc
 #brew install imagemagick
 brew install lynx
 brew install node
@@ -55,8 +58,25 @@ brew install emacs
 brew install fswatch
 brew install mobile-shell
 brew install namebench
+brew install nmap
 brew install dnstop
 brew install graphviz
+brew install pwgen
+brew install pyenv-virtualenv
+brew install youtube-dl
+brew install timelimit
+brew install pyenv-virtualenvwrapper
+brew install socat
+brew install tmux
+brew install watch
+brew install phantomjs
+brew install htop-osx
+brew install docker
+brew install boot2docker
+brew install encfs
+brew install csshx
+brew install ipcalc
+
 
 brew tap homebrew/versions
 brew install lua52
@@ -64,6 +84,7 @@ brew install lua52
 # Install native apps
 brew tap phinze/homebrew-cask
 brew install brew-cask
+
 
 
 installcask totalterminal

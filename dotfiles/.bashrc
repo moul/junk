@@ -147,6 +147,10 @@ for file in \
 done
 
 
+# PYENV
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+
 ## "modularity"
 PS1="$PS1_PREFIX$PS1"
 unset PS1_PREFIX

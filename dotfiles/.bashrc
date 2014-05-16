@@ -161,6 +161,11 @@ check_virtualenv() {
 venv_cd () {
     builtin cd "$@" && check_virtualenv
 }
+workon_safe() {
+    if [ "x${VIRTUAL_ENV}" == "x" ]; then
+        workon $@
+    fi
+}
 check_virtualenv
 alias cd=venv_cd
 

@@ -87,7 +87,7 @@ brew tap phinze/homebrew-cask
 brew install brew-cask
 
 
-
+installcask tower
 installcask totalterminal
 installcask dropbox
 installcask google-chrome

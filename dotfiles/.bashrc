@@ -49,9 +49,12 @@ ssh_knownhosts_hosts() {
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 #HISTCONTROL=ignoreboth
 shopt -s histappend
-export HISTSIZE=20000
-export HISTFILESIZE=120000
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
 shopt -s checkwinsize
+HISTIGNORE='ls:bg:fg:history'
+PROMPT_COMMAND="${PROMPT_COMMAND} history -a; " # store history on each new line
+
 
 
 ## PATH PREFIX

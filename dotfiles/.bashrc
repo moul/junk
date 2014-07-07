@@ -137,10 +137,11 @@ export COMP_WORDBREAKS
 
 
 ## LOAD DEPENDENCIES
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 for file in \
     "$BREW_PREFIX/etc/bash_completion" \
     "$BREW_PREFIX/etc/grc.bashrc" \
-    "$BREW_PREFIX//bin/virtualenvwrapper.sh" \
+    "$BREW_PREFIX/bin/virtualenvwrapper.sh" \
     "$HOME/.bash_local" \
     "$HOME/.bash_private" \
     ; do

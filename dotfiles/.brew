@@ -88,6 +88,7 @@ brew install brew-cask
 
 
 installcask tower
+installcask xquartz
 installcask totalterminal
 installcask dropbox
 installcask google-chrome

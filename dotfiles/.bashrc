@@ -1,7 +1,3 @@
-## VARIABLES
-BREW_PREFIX=$(brew --prefix)
-
-
 ## ENVIRONMENT
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -21,7 +17,6 @@ export DOCKER_HOST=tcp://172.18.42.1:4243
 #export HOSTFILE=~/.hosts
 export GOPATH="$HOME/go"
 export GREP_OPTIONS='--color=auto'
-
 
 ## ALIASES
 #alias venv=". ~/venv/bin/activate"
@@ -46,17 +41,17 @@ ssh_knownhosts_hosts() {
         grep -v "\["))
 }
 
+color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
+
 ## HISTORY
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 #HISTCONTROL=ignoreboth
 shopt -s histappend
+shopt -s checkwinsize
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
-shopt -s checkwinsize
 HISTIGNORE='ls:bg:fg:history'
 PROMPT_COMMAND="${PROMPT_COMMAND} history -a; " # store history on each new line
-
-
 
 ## PATH PREFIX
 for path in \
@@ -139,10 +134,11 @@ export COMP_WORDBREAKS
 
 ## LOAD DEPENDENCIES
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+BREW_PREFIX=$(brew --prefix)
 for file in \
     "$BREW_PREFIX/etc/bash_completion" \
     "$BREW_PREFIX/etc/grc.bashrc" \
-    "$BREW_PREFIX/bin/virtualenvwrapper.sh" \
+    "$BREW_PREFIX//bin/virtualenvwrapper.sh" \
     "$HOME/.bash_local" \
     "$HOME/.bash_private" \
     ; do

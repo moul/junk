@@ -18,6 +18,12 @@ export DOCKER_HOST=tcp://172.18.42.1:4243
 export GOPATH="$HOME/go"
 export GREP_OPTIONS='--color=auto'
 
+# Boot2docker
+export DOCKER_HOST=tcp://192.168.59.103:2376
+# export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+export DOCKER_CERT_PATH=/Users/moul/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
 ## ALIASES
 #alias venv=". ~/venv/bin/activate"
 alias emacs="emacs -nw"

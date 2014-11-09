@@ -5,6 +5,7 @@ export EDITOR=emacs
 export CDPATH=".:~"
 #export PYTHONDONTWRITEBYTECODE=1
 export PYTHONSTARTUP=~/.pythonrc
+export PYTHONPATH=".:/usr/local/lib/python2.7/site-packages/"
 export WORKON_HOME=~/Envs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true

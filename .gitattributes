@@ -1,1 +1,1 @@
-dotfiles/git-crypt filter=git-crypt diff=git-crypt
+dotfiles/git-crypt/** filter=git-crypt diff=git-crypt

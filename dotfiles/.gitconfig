@@ -74,12 +74,12 @@
 [url "git@gist.github.com:"]
         insteadOf = "gst:"
 
-[include]
-        path = ".gitconfig_private"
-
 #[credential]
 #       helper = osxkeychain
 [mergetool]
 	keepBackup = true
 [remote "origin"]
 	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+
+[include]
+        path = ".gitconfig_private"

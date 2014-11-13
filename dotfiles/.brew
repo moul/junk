@@ -38,6 +38,7 @@ brew install php54
 #brew install homebrew/dupes/screen
 
 # Install other useful binaries
+brew install fig
 brew install ack
 #brew install exiv2
 brew install git

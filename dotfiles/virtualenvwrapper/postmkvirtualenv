@@ -6,3 +6,5 @@ pip install ipython
 pip install nose
 pip install pep8
 pip install coverage
+
+pip install pip -U

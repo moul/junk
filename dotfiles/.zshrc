@@ -63,3 +63,7 @@ export EDITOR='emacs'
 
 unsetopt sharehistory
 alias rm="rm -f"
+
+if [ -f $HOME/.zshrc.local ]; then
+    . $HOME/.zshrc.local
+fi

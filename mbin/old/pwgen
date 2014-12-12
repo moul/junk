@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -e /usr/local/bin/pwgen ]; then
-    /usr/local/bin/pwgen
-else
-    ssh maggie.onouo.com pwgen $@
-fi

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/usr/bin/synergys --config ~/cu/synergy/$(hostname | cut -d\. -f 1).name.conf

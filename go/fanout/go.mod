@@ -1,3 +1,3 @@
-module moul.io/test/fanout
+module moul.io/junk/go/fanout
 
 go 1.13
